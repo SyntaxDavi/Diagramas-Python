@@ -1,0 +1,66 @@
+// Diagrama de Casos de Uso - SGIL
+digraph SGIL_Diagrama_Casos_Uso {
+	fontsize=20 label="Diagrama de Casos de Uso - SGIL" rankdir=LR
+	subgraph cluster_atores {
+		node [fillcolor=beige shape=actor style=filled]
+		color=lightgrey label=Atores style=filled
+		Cliente
+		Funcionario [label="Funcionário (Vendedor/Caixa)"]
+		Gerente [label="Gerente/Administrador"]
+	}
+	subgraph cluster_casos_uso {
+		node [fillcolor=lightblue shape=ellipse style=filled]
+		color=lightcyan label="Casos de Uso do Sistema" style=filled
+		CU_PesquisarProdutos [label="Pesquisar Produtos
+(RF09, RF10)"]
+		CU_RealizarAutoatendimentoCompra [label="Realizar Autoatendimento
+de Compra"]
+		CU_CadastrarSe [label="Cadastrar-se no Sistema"]
+		CU_RealizarVenda [label="Realizar Venda
+(RF05)"]
+		CU_ProcessarPagamento [label="Processar Pagamento
+(RF06)"]
+		CU_CadastrarCliente [label="Cadastrar Cliente
+(RF01)"]
+		CU_CancelarVenda [label="Cancelar Venda
+(RF14)"]
+		CU_ConsultarEstoqueFunc [label="Consultar Estoque"]
+		CU_GerenciarFuncionarios [label="Gerenciar Funcionários
+(RF02, RNF05)"]
+		CU_GerenciarProdutos [label="Gerenciar Produtos
+(RF03, RF11)"]
+		CU_GerenciarFornecedores [label="Gerenciar Fornecedores
+(RF12)"]
+		CU_GerenciarEstoque [label="Gerenciar Estoque
+(RF04, RF08)"]
+		CU_GerarRelatorios [label="Gerar Relatórios
+(RF07, RF08)"]
+		CU_GerenciarPromocoes [label="Gerenciar Promoções
+(RF13)"]
+		CU_AuditarTransacoes [label="Auditar Transações"]
+	}
+	Cliente -> CU_PesquisarProdutos
+	Cliente -> CU_RealizarAutoatendimentoCompra
+	Cliente -> CU_CadastrarSe
+	Funcionario -> CU_RealizarVenda
+	Funcionario -> CU_CadastrarCliente
+	Funcionario -> CU_CancelarVenda
+	Funcionario -> CU_ConsultarEstoqueFunc
+	Funcionario -> CU_PesquisarProdutos
+	Gerente -> CU_GerenciarFuncionarios
+	Gerente -> CU_GerenciarProdutos
+	Gerente -> CU_GerenciarFornecedores
+	Gerente -> CU_GerenciarEstoque
+	Gerente -> CU_GerarRelatorios
+	Gerente -> CU_GerenciarPromocoes
+	Gerente -> CU_AuditarTransacoes
+	CU_RealizarVenda -> CU_ProcessarPagamento [label=<<include>> arrowhead=empty style=dashed]
+	CU_RealizarAutoatendimentoCompra -> CU_ProcessarPagamento [label=<<include>> arrowhead=empty style=dashed]
+	CU_CancelarVenda -> CU_AuditarTransacoes [label="<<notifica>>
+(potencial extensão)" arrowhead=open dir=back style=dashed]
+	subgraph cluster_fornecedor_interacao {
+		label="Interação com Fornecedor (Indireta)" style=dotted
+		Fornecedor_Nota [label="Fornecedor é cadastrado e seus
+produtos gerenciados pelo Gerente." fillcolor=yellow shape=note]
+	}
+}

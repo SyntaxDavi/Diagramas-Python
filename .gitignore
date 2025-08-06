@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Diretórios de saída e arquivos gerados
+diagramas_sgil/
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.bak
+
+# Ambiente virtual (se houver)
+venv/
+env/
+.venv/
+
+# VSCode
+.vscode/
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
